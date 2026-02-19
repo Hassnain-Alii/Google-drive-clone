@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Google-style Bar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="<%= csrfToken %>" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/animations/scale.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/partials/header.css" />
+    <link rel="stylesheet" href="/stylesheets/partials/L-sidebar.css" />
+    <link rel="stylesheet" href="/stylesheets/partials/R-sidebar.css" />
+    <link rel="stylesheet" href="/stylesheets/partials/composeBtn.css" />
+    <link rel="stylesheet" href="/stylesheets/partials/optionBar.css" />
+    <link rel="stylesheet" href="/stylesheets/home.css" />
+    <link rel="stylesheet" href="/stylesheets/tippy.css" />
+    <link rel="stylesheet" href="/stylesheets/dropdown.css" />
+    <link rel="stylesheet" href="/stylesheets/partials/progressBar.css" />
+    <link rel="stylesheet" href="/stylesheets/partials/renamePopup.css" />
+    <link rel="stylesheet" href="/stylesheets/partials/newFolderPopup.css" />
+    <link rel="stylesheet" href="/stylesheets/tippy.css" />
+    <link rel="stylesheet" href="/stylesheets/dropdown.css" />
+
+    <link
+      rel="stylesheet"
+      href="/stylesheets/partials/moreActionDropdown.css"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/header.ejs') %> <%-
+    include('partials/renamePopup.ejs') %> <%-
+    include('partials/newFolderPopup.ejs') %>
+
+    <div class="" style="display: flex">
+      <%- include('partials/L-sidebar.ejs',{path:path}) %>
+
+      <main>
+        <%- include('partials/progressbar.ejs') %>
+        <div class="main-container">
+          <div class="main-header">
+            <p><span>Welcome to Drive</span></p>
+          </div>
+          <div class="content-container">
+            <%- include('partials/optionBar.ejs') %> <%-
+            include('partials/moreActionDropdown.ejs') %>
+
+            <div class="sugg-fold sugg">
+              <div class="sugg-fold-btn sugg-btn-div">
+                <button
+                  class="chevron-btn sugg-btn sugg-hover"
+                  data-toggle-class="sugg-fold-hide"
+                >
+                  <svg
+                    class="sugg-fold-chevron sugg-chevron chevron-down-right"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M7.41 8.59 12 13.17 16.59 8.59 18 10l-6 6-6-6z" />
+                  </svg>
+                  <span>Suggested folders</span>
+                </button>
+              </div>
+              <ul class="sugg-fold-list sugg-fold-hide">
+                <!-- <li class="sugg-fold-list-item">
+                  <button class="fold-btn option-bar-button">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <g>
+                        <path
+                          d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-5 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 8h-8v-1c0-1.33 2.67-2 4-2s4 .67 4 2v1z"
+                        ></path>
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                      </g>
+                    </svg>
+                    <div class="sugg-fold-titles">
+                      <P class="sugg-fold-main-title"><span>DriveHub</span></P>
+                      <P class="sugg-fold-sub-title"
+                        ><span>In My Drive</span></P
+                      >
+                    </div>
+                  </button>
+                  <button
+                    class="sugg-fold-dots-btn dropdown-trigger"
+                    data-menu="option-bar-action-dropdown-menu"
+                  >
+                    <svg class="dots" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M0 0h20v20H0V0z" fill="none" />
+                      <path
+                        d="M10 6c.82 0 1.5-.68 1.5-1.5S10.82 3 10 3s-1.5.67-1.5 1.5S9.18 6 10 6zm0 5.5c.82 0 1.5-.68 1.5-1.5s-.68-1.5-1.5-1.5-1.5.68-1.5 1.5.68 1.5 1.5 1.5zm0 5.5c.82 0 1.5-.67 1.5-1.5 0-.82-.68-1.5-1.5-1.5s-1.5.68-1.5 1.5c0 .83.68 1.5 1.5 1.5z"
+                      />
+                    </svg>
+                  </button>
+                </li>
+
+                <li class="sugg-fold-list-item">
+                  <button class="fold-btn option-bar-button">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"
+                      />
+                    </svg>
+                    <div class="sugg-fold-titles">
+                      <P class="sugg-fold-main-title"
+                        ><span>Untitled folder</span></P
+                      >
+                      <P class="sugg-fold-sub-title"
+                        ><span>In My Drive</span></P
+                      >
+                    </div>
+                  </button>
+                  <button
+                    class="sugg-fold-dots-btn dropdown-trigger"
+                    data-menu="option-bar-action-dropdown-menu"
+                  >
+                    <svg class="dots" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M0 0h20v20H0V0z" fill="none" />
+                      <path
+                        d="M10 6c.82 0 1.5-.68 1.5-1.5S10.82 3 10 3s-1.5.67-1.5 1.5S9.18 6 10 6zm0 5.5c.82 0 1.5-.68 1.5-1.5s-.68-1.5-1.5-1.5-1.5.68-1.5 1.5.68 1.5 1.5 1.5zm0 5.5c.82 0 1.5-.67 1.5-1.5 0-.82-.68-1.5-1.5-1.5s-1.5.68-1.5 1.5c0 .83.68 1.5 1.5 1.5z"
+                      />
+                    </svg>
+                  </button>
+                </li> -->
+              </ul>
+            </div>
+            <div class="sugg-file sugg">
+              <div class="sugg-file-btn sugg-btn-div">
+                <button
+                  class="chevron-btn sugg-btn sugg-hover"
+                  data-toggle-class="sugg-file-hide"
+                >
+                  <svg
+                    class="sugg-fold-chevron sugg-chevron chevron-down-right"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M7.41 8.59 12 13.17 16.59 8.59 18 10l-6 6-6-6z" />
+                  </svg>
+                  <span>Suggested files</span>
+                </button>
+              </div>
+              <div class="sugg-file-container file-container sugg-file-hide">
+                <div class="sugg-file-container-header file-container-header">
+                  <P
+                    class="sugg-file-container-header-title file-container-header-title file-name-title"
+                    ><span>Name</span></P
+                  >
+                  <P
+                    class="sugg-file-container-header-title file-container-header-title file-reason-title"
+                    ><span>Reason suggested</span></P
+                  >
+                  <P
+                    class="sugg-file-container-header-title file-container-header-title file-location-title"
+                    ><span>Location</span></P
+                  >
+                </div>
+                <div class="sugg-file-container-content file-content-container">
+                  <ul class="sugg-file-list file-container-list">
+                    <!-- <li
+                      class="sugg-file-list-item file-container-item file-btn option-bar-button"
+                    >
+                      <div class="sugg-file-item-container file-item-container">
+                        <div
+                          class="sugg-file-item-container-header file-item-container-header"
+                        >
+                          <svg
+                            class="sugg-file-item-container-header-icon file-item-container-header-icon"
+                            viewBox="0 0 16 12"
+                          >
+                            <path
+                              d="M12.8 0l1.6 3.2H12L10.4 0H8.8l1.6 3.2H8L6.4 0H4.8l1.6 3.2H4L2.4 0h-.8C.72 0 .008.72.008 1.6L0 11.2c0 .88.72 1.6 1.6 1.6h12.8c.88 0 1.6-.72 1.6-1.6V0h-3.2z"
+                            />
+                          </svg>
+                          <span
+                            class="sugg-file-item-title file-item-container-title"
+                            >Untitled folder</span
+                          >
+                          <svg
+                            class="sugg-file-item-people-icon file-item-container-people-icon"
+                            viewBox="0 0 16 16"
+                            focusable="false"
+                            class="HHjeWe c-qd a-s-fa-Ha-pa"
+                            fill="currentColor"
+                          >
+                            <path
+                              d="M5,7 C6.11,7 7,6.1 7,5 C7,3.9 6.11,3 5,3 C3.9,3 3,3.9 3,5 C3,6.1 3.9,7 5,7 L5,7 Z M11,7 C12.11,7 13,6.1 13,5 C13,3.9 12.11,3 11,3 C9.89,3 9,3.9 9,5 C9,6.1 9.9,7 11,7 L11,7 Z M5,8.2 C3.33,8.2 0,9.03 0,10.7 L0,12 L10,12 L10,10.7 C10,9.03 6.67,8.2 5,8.2 L5,8.2 Z M11,8.2 C10.75,8.2 10.46,8.22 10.16,8.26 C10.95,8.86 11.5,9.66 11.5,10.7 L11.5,12 L16,12 L16,10.7 C16,9.03 12.67,8.2 11,8.2 L11,8.2 Z"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="sugg-file-item-reason-sugg file-item-container-reason-sugg"
+                        >
+                          <span>You opened</span>
+                          <span>.</span>
+                          <span>19 Aug 2025</span>
+                        </div>
+                        <div
+                          class="sugg-file-item-location file-item-container-location"
+                        >
+                          <svg
+                            class="sugg-file-item-location-icon file-item-container-location-icon"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <g>
+                              <path
+                                d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-5 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 8h-8v-1c0-1.33 2.67-2 4-2s4 .67 4 2v1z"
+                              ></path>
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                            </g>
+                          </svg>
+                          <span
+                            class="sugg-file-item-location-text file-item-container-location-text"
+                            >In My Drive</span
+                          >
+                        </div>
+                        <button
+                          class="sugg-file-container-item-dots-btn file-item-container-dots-btn more-action-dropdown-btn dropdown-trigger"
+                          data-menu="more-action-dropdown-menu"
+                        >
+                          <svg
+                            class="sugg-file-dots-icon file-item-container-dots-icon dots"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path d="M0 0h20v20H0V0z" fill="none" />
+                            <path
+                              d="M10 6c.82 0 1.5-.68 1.5-1.5S10.82 3 10 3s-1.5.67-1.5 1.5S9.18 6 10 6zm0 5.5c.82 0 1.5-.68 1.5-1.5s-.68-1.5-1.5-1.5-1.5.68-1.5 1.5.68 1.5 1.5 1.5zm0 5.5c.82 0 1.5-.67 1.5-1.5 0-.82-.68-1.5-1.5-1.5s-1.5.68-1.5 1.5c0 .83.68 1.5 1.5 1.5z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </li> -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="empty-spam empty-container empty-container-state none">
+          <img
+            src="https://ssl.gstatic.com/docs/doclist/images/empty_state_home.svg"
+            alt="Empty Spam Illustration"
+          />
+          <h2>Your spam is empty</h2>
+          <p>
+            Drag your files and folders here or use the 'New' button to upload
+          </p>
+        </div>
+      </main>
+      <%- include('partials/R-sidebar.ejs') %>
+    </div>
+    <script src="/javascripts/homeManager.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="/javascripts/tippy-init.js"></script>
+    <script src="/javascripts/dropdown.js"></script>
+    <script src="/javascripts/partials/L-sidebar.js"></script>
+    <script src="/javascripts/partials/R-sidebar.js"></script>
+    <script src="/javascripts/partials/composeBtn.js"></script>
+    <script src="/javascripts/chevron.js"></script>
+    <script src="/javascripts/fileIcons.js"></script>
+    <script src="/javascripts/renderFileItem.js"></script>
+    <script src="/javascripts/progressBar.js"></script>
+    <script src="/javascripts/uploadHandler.js"></script>
+    <script src="/javascripts/selection/selectionStore.js"></script>
+    <script src="/javascripts/selection/selectionUi.js"></script>
+    <script src="/javascripts/selection/selectionController.js"></script>
+    <script src="/javascripts/partials/renamePopup.js"></script>
+    <script src="/javascripts/menu/menuActionHandler.js"></script>
+    <script src="/javascripts/menu/menuActions.js"></script>
+    <script src="/javascripts/menu/contextMenu.js"></script>
+    <script src="/javascripts/menu/dotsMenu.js"></script>
+    <script src="/javascripts/menu/optionBar.js"></script>
+    <script src="/javascripts/menu/menuPolicy.js"></script>
+    <script src="/javascripts/menu/menuPopper.js"></script>
+    <script src="/javascripts/menu/optionBarMenu.js"></script>
+  </body>
+</html>
